@@ -7,6 +7,7 @@ router.get('/', controller.getAll)
 router.post('/', controller.postCurso)
 router.get('/bootcamps', controller.getBootcamps)
 router.get('/:id', controller.getById)
+router.delete('/:id', controller.deleteById)
 
 
 module.exports = router

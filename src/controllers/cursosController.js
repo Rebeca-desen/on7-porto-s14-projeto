@@ -43,9 +43,29 @@ const bootcamp = req.params.bootcamp
     })
 }
 
+const deleteById = (req, res) => {
+    const id = req.params.id
+
+    cursos.find({id}, function (err,curso) {
+        if (curso.length > 0) {
+        cursos.deleteMany({id}, function(err){
+            if (err){res.status(500).send('tem algo errado ai')}
+        
+            res.status(200).send({
+                "status": true,
+                "mensagem": "Curso excluído com sucesso"
+                })
+        })
+        
+        }
+        else{ res.status(500).send('algo de errado não esta certo')}
+    })
+}
+
 module.exports = {
     getAll,
     postCurso,
     getById,
-    getBootcamps
+    getBootcamps,
+    deleteById
 }
