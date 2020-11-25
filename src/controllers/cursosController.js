@@ -18,13 +18,26 @@ const postCurso = (req, res) => {
     curso.save(function (err){
         if (err) res.status(500).send('acho que não adicionou nada')
     })
-    res.status(200).send('certinho')
+    res.status(200).send({
+        "status": true,
+        "mensagem": "Curso incluido com sucesso"
+        })
 }
 
+const getById = (req, res) => {
+    const id = req.params.id
+  
+    cursos.find({id}, function (err, curso){
+        if (err) res.status(500).send('ai fofa, deu ruim')
 
+        else{
+        res.status(200).send(curso)}
+    })
+}
 
 
 module.exports = {
     getAll,
-    postCurso
+    postCurso,
+    getById
 }
