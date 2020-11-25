@@ -6,7 +6,7 @@ const app = express()
 
 
 //String de conexão
-mongoose.connect("mongodb://localhost:27017/cursos", { 
+mongoose.connect("mongodb://localhost:27017/cursosExercicioS14", { 
   useNewUrlParser: true, 
   useUnifiedTopology: true 
 });
