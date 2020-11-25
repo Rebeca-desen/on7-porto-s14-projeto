@@ -35,9 +35,17 @@ const getById = (req, res) => {
     })
 }
 
+const getBootcamps = (req, res) => {
+const bootcamp = req.params.bootcamp
+    cursos.find({bootcamp: true}, function(err, curso){
+     if (err) res.status(500).send('errrrou')
+     else{ res.status(200).send(curso)}
+    })
+}
 
 module.exports = {
     getAll,
     postCurso,
-    getById
+    getById,
+    getBootcamps
 }

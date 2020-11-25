@@ -5,6 +5,7 @@ const controller = require("../controllers/cursosController")
 
 router.get('/', controller.getAll)
 router.post('/', controller.postCurso)
+router.get('/bootcamps', controller.getBootcamps)
 router.get('/:id', controller.getById)
 
 
