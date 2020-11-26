@@ -62,10 +62,33 @@ const deleteById = (req, res) => {
     })
 }
 
+const putById = (req, res) => {
+    const id = req.params.id
+
+    cursos.find({id}, function(err, curso) {
+        if( curso.length> 0 ) {
+            cursos.updateMany({ id }, { $set: req.body }, function (err){
+                if(err){
+                    res.status(500).send('ve isso ai')
+                }
+                else { res.status(200).send(
+                    {
+                        "status": true,
+                        "mensagem": "Cursos atualizados com sucesso"
+                        })
+                }
+            })
+        }
+        else{  res.status(200).send('esse registro não existe')}
+    })
+
+}
+
 module.exports = {
     getAll,
     postCurso,
     getById,
     getBootcamps,
-    deleteById
+    deleteById,
+    putById
 }
